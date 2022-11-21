@@ -4,7 +4,7 @@
 ######### Cadastro de Mensagem
 POST http://127.0.0.1:3333/messages HTTP/1.1
 Content-Type: application/json
-Authorization: Bearer MzY._IpcLdMNytwk6p5PkAOe5-n9wCb405YQoD0q53RJhV3lcMxZ-T9_gRHqmPg6
+Authorization: Bearer MQ.o7I9b8EONYwH4FmxRoZsHA-LnE3JFZqOQouVKfab05HBjCC-a4MifwykDs-3
 
 {
     "title": "Olá",
@@ -18,7 +18,7 @@ Content-Type: application/json
 ######### Listar Mensagem específica
 GET http://127.0.0.1:3333/messages/12 HTTP/1.1
 Content-Type: application/json
-Authorization: Bearer MzY._IpcLdMNytwk6p5PkAOe5-n9wCb405YQoD0q53RJhV3lcMxZ-T9_gRHqmPg6
+Authorization: Bearer MQ.o7I9b8EONYwH4FmxRoZsHA-LnE3JFZqOQouVKfab05HBjCC-a4MifwykDs-3
 
 ######### Alterar Mensagem
 PUT http://127.0.0.1:3333/messages/1 HTTP/1.1
