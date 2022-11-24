@@ -7,7 +7,6 @@ export default class MessagesController {
   public async index({ }: HttpContextContract) {
     const message = await Message
       .query()
-      .preload('messageTopic')
       .preload('user')
       .orderBy('id')
     return message
@@ -20,7 +19,6 @@ export default class MessagesController {
       message: data.message,
       userId: auth.user?.id
     })
-    await message.related('messageTopic').attach(data.topic)
     return message
   }
 
@@ -29,7 +27,7 @@ export default class MessagesController {
       const message = await Message
         .query()
         .where("id", params.id)
-        .preload('messageTopic')
+
       return message[0]
     } catch (error) {
       response.status(400).send("Mensagem não encontrada!!!")
@@ -38,12 +36,11 @@ export default class MessagesController {
 
   public async update({ request, params, response }: HttpContextContract) {
     try {
-      const { title, message, topic } = await request.validate(MessageValidator)
+      const { title, message} = await request.validate(MessageValidator)
       const messageUpdate = await Message.findOrFail(params.id)
       messageUpdate.title = title
       messageUpdate.message = message
       await messageUpdate.save()
-      await messageUpdate.related('messageTopic').sync(topic)
       return messageUpdate
     } catch (error) {
       response.status(400).send("Mensagem não encontrada!!!")
